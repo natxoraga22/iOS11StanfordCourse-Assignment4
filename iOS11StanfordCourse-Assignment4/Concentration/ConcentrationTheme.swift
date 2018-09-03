@@ -11,6 +11,7 @@ import UIKit
 
 struct ConcentrationTheme {
     
+    let name: String
     var emojis: [String]
     var primaryColor: UIColor       // card back, text
     var secondaryColor: UIColor     // background
