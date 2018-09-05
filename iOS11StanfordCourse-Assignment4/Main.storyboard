@@ -37,11 +37,17 @@
                                                 <rect key="frame" x="0.0" y="68" width="218" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="Animals"/>
+                                                <connections>
+                                                    <action selector="touchTheme:" destination="RHD-Nj-Cac" eventType="touchUpInside" id="4Ji-g5-7pr"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaP-lt-z6g">
                                                 <rect key="frame" x="0.0" y="136" width="218" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="Animal faces"/>
+                                                <connections>
+                                                    <action selector="touchTheme:" destination="RHD-Nj-Cac" eventType="touchUpInside" id="pLo-rM-kYj"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -52,16 +58,25 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="218" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="Sports"/>
+                                                <connections>
+                                                    <action selector="touchTheme:" destination="RHD-Nj-Cac" eventType="touchUpInside" id="6CV-5e-Dqs"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYb-QW-qwf">
                                                 <rect key="frame" x="0.0" y="68" width="218" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="Faces"/>
+                                                <connections>
+                                                    <action selector="touchTheme:" destination="RHD-Nj-Cac" eventType="touchUpInside" id="tGq-XS-mwy"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bw-XK-hlI">
                                                 <rect key="frame" x="0.0" y="136" width="218" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="Winter"/>
+                                                <connections>
+                                                    <action selector="touchTheme:" destination="RHD-Nj-Cac" eventType="touchUpInside" id="QQJ-1x-a8j"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

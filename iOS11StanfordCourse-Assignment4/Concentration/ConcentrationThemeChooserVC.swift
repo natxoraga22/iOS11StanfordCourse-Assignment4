@@ -11,6 +11,14 @@ import UIKit
 
 class ConcentrationThemeChooserVC: UIViewController {
 
+    // MARK: - Constants
+    
+    private struct Constants {
+        static let showConcentrationGameSegueIdentifier = "Show Concentration Game"
+        static let buttonLabelFontSize: CGFloat = 35.0
+        static let buttonCornerRadius: CGFloat = 8.0
+    }
+    
     // MARK: - Available themes
     
     let themes = [
@@ -55,10 +63,10 @@ class ConcentrationThemeChooserVC: UIViewController {
         // Title
         themeButton.setTitle(" \(theme.name) ", for: .normal)
         themeButton.setTitleColor(theme.secondaryColor, for: .normal)
-        themeButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body).withSize(35.0)
+        themeButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body).withSize(Constants.buttonLabelFontSize)
         // Background
         themeButton.backgroundColor = theme.primaryColor
-        themeButton.layer.cornerRadius = 8.0
+        themeButton.layer.cornerRadius = Constants.buttonCornerRadius
         // Action
         themeButton.addTarget(self, action: #selector(touchTheme(_:)), for: .touchUpInside)
         return themeButton
@@ -67,7 +75,7 @@ class ConcentrationThemeChooserVC: UIViewController {
     // MARK: - IBActions
     
     @IBAction func touchTheme(_ sender: UIButton) {
-        performSegue(withIdentifier: "Show Concentration Game", sender: sender)
+        performSegue(withIdentifier: Constants.showConcentrationGameSegueIdentifier, sender: sender)
     }
     
     // MARK: - UIContentContainer Protocol
@@ -77,14 +85,20 @@ class ConcentrationThemeChooserVC: UIViewController {
         buttonsParentStackView.axis = size.height > size.width ? .vertical : .horizontal
     }
     
-
-    /*
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == Constants.showConcentrationGameSegueIdentifier {
+            if let destinationVC = segue.destination as? ConcentrationVC, let button = sender as? UIButton {
+                destinationVC.chosenTheme = themes[indexOf(button)!]
+            }
+        }
     }
-    */
+    
+    private func indexOf(_ button: UIButton) -> Int? {
+        if let index = buttonsStackView1.arrangedSubviews.index(of: button) { return index }
+        if let index = buttonsStackView2.arrangedSubviews.index(of: button) { return buttonsStackView1.arrangedSubviews.count + index }
+        return nil
+    }
 
 }

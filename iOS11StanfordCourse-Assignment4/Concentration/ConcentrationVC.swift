@@ -22,21 +22,6 @@ class ConcentrationVC: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var newGameButton: UIButton!
     
-    var themes = [
-        ConcentrationTheme(name: "Halloween", emojis: ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎", "🧛🏻‍♂️", "🧟‍♂️"],
-                           primaryColor: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1), secondaryColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)),
-        ConcentrationTheme(name: "Animal faces", emojis: ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁", "🐮", "🐷", "🐵"],
-                           primaryColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), secondaryColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
-        ConcentrationTheme(name: "Animals", emojis: ["🦆", "🦅", "🦋", "🐌", "🐞", "🐢", "🐍", "🦑", "🦐", "🦀", "🐬", "🐅", "🦍", "🐘", "🐪", "🦒", "🐄", "🐖", "🐏", "🐓", "🐇"],
-                           primaryColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), secondaryColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
-        ConcentrationTheme(name: "Sports", emojis: ["⚽️", "🏀", "🏈", "⚾️", "🎾", "🏐", "🏉", "🎱", "🏓", "🏸", "🏒", "🏑", "🏏"],
-                           primaryColor: #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1), secondaryColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)),
-        ConcentrationTheme(name: "Faces", emojis: ["😂", "☺️", "😇", "🙃", "😜", "🤨", "🤩", "😏", "😫", "😭", "🤬", "🤯", "😱", "🤫", "🤥", "🙄", "😴", "🤤", "😵", "🤧", "🤒"],
-                           primaryColor: #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1), secondaryColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)),
-        ConcentrationTheme(name: "Winter", emojis: ["🤧", "🌂", "🌨", "⛈", "❄️", "⛄️", "☔️", "⛷", "🏂", "🎄", "🎅🏼"],
-                           primaryColor: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1), secondaryColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
-    ]
-    
     var chosenTheme: ConcentrationTheme!
     var emoji: [Int:String]!
     
@@ -57,11 +42,7 @@ class ConcentrationVC: UIViewController {
     }
     
     func newGame() {
-        // set random theme
-        let randomThemeIndex = Int(arc4random_uniform(UInt32(themes.count)))
-        chosenTheme = themes[randomThemeIndex]
-        emoji = [Int:String]()
-        
+        emoji = [:]
         game = ConcentrationGame(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
     }
     
