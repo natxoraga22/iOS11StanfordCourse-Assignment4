@@ -35,10 +35,13 @@ class ConcentrationThemeChooserVC: UIViewController {
     @IBOutlet weak var buttonsStackView2: UIStackView!
     
     
+    // MARK: - View Controller Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Concentration"
         
+        // buttons layout for each theme
         buttonsStackView1.subviews.forEach { subview in subview.removeFromSuperview() }
         buttonsStackView2.subviews.forEach { subview in subview.removeFromSuperview() }
         for (index, theme) in themes.enumerated() {
@@ -56,8 +59,18 @@ class ConcentrationThemeChooserVC: UIViewController {
         // Background
         themeButton.backgroundColor = theme.primaryColor
         themeButton.layer.cornerRadius = 8.0
+        // Action
+        themeButton.addTarget(self, action: #selector(touchTheme(_:)), for: .touchUpInside)
         return themeButton
     }
+    
+    // MARK: - IBActions
+    
+    @IBAction func touchTheme(_ sender: UIButton) {
+        performSegue(withIdentifier: "Show Concentration Game", sender: sender)
+    }
+    
+    // MARK: - UIContentContainer Protocol
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -68,7 +81,6 @@ class ConcentrationThemeChooserVC: UIViewController {
     /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
