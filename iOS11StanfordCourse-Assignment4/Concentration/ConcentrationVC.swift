@@ -16,20 +16,33 @@ class ConcentrationVC: UIViewController {
         didSet { updateViewFromModel() }
     }
     
-    // View
+    // MARK: - IBOutlets
+    
     @IBOutlet var cardButtons: [UIButton]!
     @IBOutlet weak var flipCountLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var newGameButton: UIButton!
     
+    @IBOutlet weak var cardButtonsStackView: UIStackView!
+    var counterSeparator = "\n"
+    
     var chosenTheme: ConcentrationTheme!
     var emoji: [Int:String]!
     
+    
+    // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         newGame()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        arrangeViews(with: view.frame.size)
+    }
+    
+    // MARK: - IBActions
     
     @IBAction func touchNewGame(_ sender: UIButton) {
         newGame()
@@ -61,9 +74,9 @@ class ConcentrationVC: UIViewController {
             }
         }
         // flips & score
-        flipCountLabel.text = "Flips\n\(game.flipCount)"
+        flipCountLabel.text = "Flips\(counterSeparator)\(game.flipCount)"
         flipCountLabel.textColor = chosenTheme.primaryColor
-        scoreLabel.text = "Score\n\(game.score)"
+        scoreLabel.text = "Score\(counterSeparator)\(game.score)"
         scoreLabel.textColor = chosenTheme.primaryColor
         
         // new game button & background
@@ -78,6 +91,18 @@ class ConcentrationVC: UIViewController {
             }
         }
         return emoji[card.identifier] ?? "?"
+    }
+    
+    // MARK: - UIContentContainer Protocol
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        arrangeViews(with: size)
+    }
+    
+    private func arrangeViews(with size: CGSize) {
+        cardButtonsStackView.axis = size.height > size.width ? .vertical : .horizontal
+        counterSeparator = size.height > size.width ? "\n" : ": "
     }
 
 }

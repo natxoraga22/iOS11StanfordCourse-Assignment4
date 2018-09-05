@@ -402,6 +402,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hsV-3w-tth"/>
                     <connections>
+                        <outlet property="cardButtonsStackView" destination="uwe-w5-Dvj" id="dVH-Lg-sxI"/>
                         <outlet property="flipCountLabel" destination="y9e-iB-S2t" id="gLV-TG-zCt"/>
                         <outlet property="newGameButton" destination="EdS-vj-fDk" id="Rxt-ml-flK"/>
                         <outlet property="scoreLabel" destination="s49-f7-f7N" id="9hY-gp-3zk"/>

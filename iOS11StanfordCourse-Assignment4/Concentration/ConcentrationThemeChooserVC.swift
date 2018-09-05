@@ -57,6 +57,11 @@ class ConcentrationThemeChooserVC: UIViewController {
             else { buttonsStackView2.addArrangedSubview(buttonForTheme(theme)) }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        arrangeViews(with: view.frame.size)
+    }
 
     private func buttonForTheme(_ theme: ConcentrationTheme) -> UIButton {
         let themeButton = UIButton(type: .custom)
@@ -82,6 +87,10 @@ class ConcentrationThemeChooserVC: UIViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        arrangeViews(with: size)
+    }
+    
+    private func arrangeViews(with size: CGSize) {
         buttonsParentStackView.axis = size.height > size.width ? .vertical : .horizontal
     }
     
