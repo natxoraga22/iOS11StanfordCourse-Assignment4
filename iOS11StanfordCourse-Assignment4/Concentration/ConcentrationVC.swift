@@ -29,7 +29,7 @@ class ConcentrationVC: UIViewController {
     
     // MARK: - Theme
     
-    private var chosenTheme: ConcentrationTheme!
+    var chosenTheme: ConcentrationTheme!    // must be set by someone else
     private var emoji: [Int:String]!
     
     
@@ -37,6 +37,7 @@ class ConcentrationVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Concentration"
         newGame()
     }
     
@@ -107,6 +108,8 @@ class ConcentrationVC: UIViewController {
     private func arrangeViews(with size: CGSize) {
         cardButtonsStackView.axis = size.height > size.width ? .vertical : .horizontal
         counterSeparator = size.height > size.width ? "\n" : ": "
+        flipCountLabel.text = "Flips\(counterSeparator)\(game.flipCount)"
+        scoreLabel.text = "Score\(counterSeparator)\(game.score)"
     }
 
 }

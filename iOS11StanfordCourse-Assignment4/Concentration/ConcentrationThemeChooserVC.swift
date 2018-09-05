@@ -47,7 +47,7 @@ class ConcentrationThemeChooserVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Concentration"
+        self.navigationItem.title = "Theme Chooser"
         
         // buttons layout for each theme
         buttonsStackView1.subviews.forEach { subview in subview.removeFromSuperview() }
