@@ -426,6 +426,10 @@
                         <outletCollection property="cardButtons" destination="MUu-VO-Wui" collectionClass="NSMutableArray" id="eLm-sb-k0D"/>
                         <outletCollection property="cardButtons" destination="yQS-d3-1Rr" collectionClass="NSMutableArray" id="v95-xl-Hmk"/>
                         <outletCollection property="cardButtons" destination="6Ei-Q9-tkE" collectionClass="NSMutableArray" id="V48-rZ-IvN"/>
+                        <outletCollection property="cardButtons" destination="56E-pA-DIf" collectionClass="NSMutableArray" id="6bH-Zn-CZU"/>
+                        <outletCollection property="cardButtons" destination="KyZ-x5-Ay9" collectionClass="NSMutableArray" id="rJJ-Yr-b06"/>
+                        <outletCollection property="cardButtons" destination="PC7-nG-1l7" collectionClass="NSMutableArray" id="Nku-Ph-5wb"/>
+                        <outletCollection property="cardButtons" destination="crl-f9-fpJ" collectionClass="NSMutableArray" id="pgg-ax-n70"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

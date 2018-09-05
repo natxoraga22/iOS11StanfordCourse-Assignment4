@@ -11,23 +11,26 @@ import UIKit
 
 class ConcentrationVC: UIViewController {
 
-    // Model
-    var game: ConcentrationGame! {
+    // MARK: - Model
+    
+    private var game: ConcentrationGame! {
         didSet { updateViewFromModel() }
     }
     
     // MARK: - IBOutlets
     
     @IBOutlet var cardButtons: [UIButton]!
+    @IBOutlet weak var cardButtonsStackView: UIStackView!
+    @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet weak var flipCountLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var newGameButton: UIButton!
     
-    @IBOutlet weak var cardButtonsStackView: UIStackView!
-    var counterSeparator = "\n"
+    private var counterSeparator = "\n"
     
-    var chosenTheme: ConcentrationTheme!
-    var emoji: [Int:String]!
+    // MARK: - Theme
+    
+    private var chosenTheme: ConcentrationTheme!
+    private var emoji: [Int:String]!
     
     
     // MARK: - View Controller Lifecycle
@@ -48,28 +51,29 @@ class ConcentrationVC: UIViewController {
         newGame()
     }
     
+    private func newGame() {
+        emoji = [:]
+        game = ConcentrationGame(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+    }
+    
     @IBAction func touchCard(_ sender: UIButton) {
         let cardNumber = cardButtons.index(of: sender)
         game.chooseCard(at: cardNumber!)
         updateViewFromModel()
     }
     
-    func newGame() {
-        emoji = [:]
-        game = ConcentrationGame(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-    }
-    
-    func updateViewFromModel() {
+    // MARK: - Model-View synchronization
+
+    private func updateViewFromModel() {
         // cards
-        for index in cardButtons.indices {
-            let button = cardButtons[index]
+        for (index, button) in cardButtons.enumerated() {
             let card = game.cards[index]
             if card.isFaceUp {
-                button.setTitle(emoji(for: card), for: UIControlState.normal)
+                button.setTitle(emoji(for: card), for: .normal)
                 button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             }
             else {
-                button.setTitle("", for: UIControlState.normal)
+                button.setTitle("", for: .normal)
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : chosenTheme.primaryColor
             }
         }
@@ -80,7 +84,7 @@ class ConcentrationVC: UIViewController {
         scoreLabel.textColor = chosenTheme.primaryColor
         
         // new game button & background
-        newGameButton.setTitleColor(chosenTheme.primaryColor, for: UIControlState.normal)
+        newGameButton.setTitleColor(chosenTheme.primaryColor, for: .normal)
         view.backgroundColor = chosenTheme.secondaryColor
     }
     
